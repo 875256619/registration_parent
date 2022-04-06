@@ -20,6 +20,7 @@ import java.util.Random;
 @Api(tags = "医院设置管理")
 @RestController
 @RequestMapping("/admin/hosp/hospitalSet")
+@CrossOrigin
 public class HospitalSetController {
 
     // http://localhost:8201/admin/hosp/hospitalSet/findAll
@@ -89,7 +90,6 @@ public class HospitalSetController {
     @ApiOperation(value = "根据id获取医院信息")
     @GetMapping("getHospitalSet/{id}")
     public Result getHospitalSet(@PathVariable Long id) {
-        int a = 1/0;
         HospitalSet hospitalSet = hospitalSetService.getById(id);
         return Result.ok(hospitalSet);
     }
