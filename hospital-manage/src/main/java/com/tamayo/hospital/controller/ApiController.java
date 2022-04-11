@@ -1,6 +1,7 @@
 package com.tamayo.hospital.controller;
 
 
+import com.tamayo.hospital.utils.Result;
 import io.swagger.annotations.Api;
 import com.tamayo.hospital.service.ApiService;
 import com.tamayo.hospital.mapper.HospitalSetMapper;
@@ -10,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,9 +29,9 @@ public class ApiController extends BaseController {
 	@Autowired
 	private ApiService apiService;
 
-
 	@Autowired
 	private HospitalSetMapper hospitalSetMapper;
+
 
 	@RequestMapping("/hospitalSet/index")
 	public String getHospitalSet(ModelMap model,RedirectAttributes redirectAttributes) {
@@ -123,8 +121,8 @@ public class ApiController extends BaseController {
 
 	@RequestMapping("/schedule/list")
 	public String findSchedule(ModelMap model,
-								 @RequestParam(defaultValue = "1") int pageNum,
-								 @RequestParam(defaultValue = "10") int pageSize,
+							   @RequestParam(defaultValue = "1") int pageNum,
+							   @RequestParam(defaultValue = "10") int pageSize,
 							   HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
 			HospitalSet hospitalSet = hospitalSetMapper.selectById(1);
